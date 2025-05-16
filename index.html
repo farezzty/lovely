@@ -37,4 +37,51 @@
   <button onclick="alert('รักที่สุดเลย! 💋')">คลิกเพื่อรับจุ๊บ</button>
 </body>
 </html>
-initial commit
+<form id="messageForm">
+  <label for="message">ข้อความจากมี๊มิลถึงลูกหมา:</label><br>
+  <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
+  <button type="submit">ส่งให้ลูกหมา 🐶</button>
+</form>
+
+<div id="feedback" style="margin-top:10px; color: green;"></div>
+
+<div id="allMessages" style="margin-top:20px; background: #fff9c4; padding: 10px; border-radius: 8px;">
+  <h3>📬 ข้อความทั้งหมดจากมี๊:</h3>
+  <ul id="messageList"></ul>
+</div>
+<script>
+  const messages = []; // เก็บข้อความชั่วคราวในหน้านี้
+
+  document.getElementById('messageForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // ไม่ให้รีเฟรชหน้าเวลา submit
+
+    const textarea = document.getElementById('message');
+    const feedback = document.getElementById('feedback');
+    const messageList = document.getElementById('messageList');
+    const msg = textarea.value.trim();
+
+    if (msg === "") {
+      feedback.style.color = "red";
+      feedback.textContent = "กรุณาพิมพ์ข้อความก่อนส่งนะคะ 😊";
+      return;
+    }
+
+    // เพิ่มข้อความลงในอาเรย์
+    messages.push(msg);
+
+    // แสดงฟีดแบ็คว่าได้รับข้อความแล้ว
+    feedback.style.color = "green";
+    feedback.textContent = "ลูกหมาได้รับข้อความแน่นอนคั้บ 💖";
+
+    // เคลียร์กล่องข้อความ
+    textarea.value = "";
+
+    // อัพเดตแสดงรายการข้อความทั้งหมด
+    messageList.innerHTML = "";
+    messages.forEach(function(m) {
+      const li = document.createElement('li');
+      li.textContent = m;
+      messageList.appendChild(li);
+    });
+  });
+</script>
