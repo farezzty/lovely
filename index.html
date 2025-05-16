@@ -87,3 +87,86 @@
     });
   });
 </script>
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<title>เซอร์ไพรส์รักที่สุดเลย</title>
+<style>
+  body {
+    font-family: 'Kanit', sans-serif;
+    background-color: #fff0f5;
+    text-align: center;
+    padding: 50px;
+  }
+  button {
+    font-size: 20px;
+    padding: 10px 30px;
+    background-color: #e75480;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+  }
+  /* กล่อง popup */
+  #popup {
+    display: none; /* ซ่อนก่อน */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffe4e1;
+    border: 2px solid #e75480;
+    border-radius: 15px;
+    padding: 20px 40px;
+    box-shadow: 0 0 15px rgba(231, 84, 128, 0.7);
+    z-index: 9999;
+  }
+  #popup img {
+    width: 80px;
+    margin-bottom: 15px;
+  }
+  #popup p {
+    font-size: 24px;
+    color: #e75480;
+    font-weight: bold;
+    margin: 0;
+  }
+  /* ปุ่มปิด popup */
+  #popup button.close-btn {
+    margin-top: 20px;
+    background-color: #e75480;
+    border: none;
+    padding: 5px 15px;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+  <h1>ถึงมี๊คนสวย 💖</h1>
+  <button id="kissBtn">รับจุ๊บ</button>
+
+  <div id="popup">
+    <img src="https://cdn-icons-png.flaticon.com/512/833/833472.png" alt="หัวใจ" />
+    <p>รักที่สุดเลย 💕</p>
+    <button class="close-btn" onclick="closePopup()">ปิด</button>
+  </div>
+
+  <script>
+    const btn = document.getElementById('kissBtn');
+    const popup = document.getElementById('popup');
+
+    btn.addEventListener('click', () => {
+      popup.style.display = 'block';
+    });
+
+    function closePopup() {
+      popup.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
+
